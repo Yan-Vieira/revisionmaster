@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="200"
+   height="200"
+   viewBox="0 0 52.916665 52.916666"
+   version="1.1"
+   id="svg5"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     showguides="false" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="font-variation-settings:normal;opacity:1;fill:#9500ff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.05834;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
+       id="rect184"
+       width="52.916664"
+       height="52.916664"
+       x="1.5543122e-15"
+       y="1.5543122e-15"
+       ry="1.2002409" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:1.04614;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="M 1.1127193,12.297924 H 51.803947"
+       id="path898"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.55625px;font-family:Inter;-inkscape-font-specification:'Inter Medium';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.231005;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="10.846194"
+       y="21.829601"
+       id="text1050"><tspan
+         sodipodi:role="line"
+         id="tspan1048"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.55625px;font-family:Inter;-inkscape-font-specification:'Inter Medium';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.231005"
+         x="10.846194"
+         y="21.829601">Rev 1</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.14837;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="path1360"
+       cx="26.458332"
+       cy="19.839729"
+       r="2.778125" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.55625px;font-family:Inter;-inkscape-font-specification:'Inter Medium';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.231005;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="42.7216"
+       y="21.829601"
+       id="text1364"><tspan
+         sodipodi:role="line"
+         id="tspan1362"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.55625px;font-family:Inter;-inkscape-font-specification:'Inter Medium';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.231005"
+         x="42.7216"
+         y="21.829601">Rev 2</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.14837;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="circle1366"
+       cx="10.715969"
+       cy="32.894451"
+       r="2.778125" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.14837;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="circle1368"
+       cx="26.458332"
+       cy="32.894451"
+       r="2.778125" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.55625px;font-family:Inter;-inkscape-font-specification:'Inter Medium';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.231005;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="42.719616"
+       y="34.911945"
+       id="text1372"><tspan
+         sodipodi:role="line"
+         id="tspan1370"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:5.55625px;font-family:Inter;-inkscape-font-specification:'Inter Medium';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.231005"
+         x="42.719616"
+         y="34.911945">Rev 3</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.14837;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="circle1374"
+       cx="10.715969"
+       cy="46.676258"
+       r="2.778125" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.14837;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="circle1376"
+       cx="26.458332"
+       cy="45.949173"
+       r="2.778125" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.14837;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="circle1378"
+       cx="42.200699"
+       cy="45.949173"
+       r="2.778125" />
+  </g>
+</svg>
