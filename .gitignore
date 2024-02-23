@@ -8,6 +8,7 @@
 
 # testing
 /coverage
+/revisionmaster-server
 
 # next.js
 /.next/
