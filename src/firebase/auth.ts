@@ -6,8 +6,11 @@ import {
     createUserWithEmailAndPassword,
     signInWithPopup,
     GoogleAuthProvider,
+    sendEmailVerification,
     deleteUser
 } from "firebase/auth"
+
+
 
 /**
  * @param mode whether the function is being used in default mode or in an automatic test
@@ -31,18 +34,20 @@ export async function createUser (mode:string = FirebaseMode.default, altAuth:Au
             if (!email || !password) return AuthEnum.Errors.argumentMissing
 
             try {
-                const result = await createUserWithEmailAndPassword(choseAuth, email, password)
+                const newUserCredential = await createUserWithEmailAndPassword(choseAuth, email, password)
 
-                return result
+                mode === FirebaseMode.default && await sendEmailVerification(newUserCredential.user)
+
+                return newUserCredential
             } catch (error) {
                 return (error as any).code as string
             }
         },
         'google': async () => {
             try {
-                const result = await signInWithPopup(choseAuth, new GoogleAuthProvider())
+                const newUserCredential = await signInWithPopup(choseAuth, new GoogleAuthProvider())
 
-                return result
+                return newUserCredential
             } catch (error) {
                 return (error as any).code as string
             }
@@ -55,6 +60,7 @@ export async function createUser (mode:string = FirebaseMode.default, altAuth:Au
 
     return cases[loginMethod](email, password)
 }
+
 
 
 /**
