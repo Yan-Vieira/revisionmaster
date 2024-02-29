@@ -31,7 +31,9 @@ export async function createUser (mode:string = FirebaseMode.default, altAuth:Au
 
     const cases = {
         'emailAndPassword': async () => {
-            if (!email || !password) return AuthEnum.Errors.argumentMissing
+            if (!email || email.length <= 0) return AuthEnum.Errors.argumentMissing
+
+            if (!password || password.length <= 0) return AuthEnum.Errors.argumentMissing
 
             try {
                 const newUserCredential = await createUserWithEmailAndPassword(choseAuth, email, password)
