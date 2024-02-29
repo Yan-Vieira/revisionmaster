@@ -1,10 +1,5 @@
 import { getFirebase } from "./firebaseInit"
-import { createUser, deleteCurrentUser } from "./auth"
-
-const authFuncs = {
-    createUser,
-    deleteCurrentUser
-}
+import * as authFuncs from "./auth"
 
 /**
  * Every functions that allow the communication between frontend and firebase services
