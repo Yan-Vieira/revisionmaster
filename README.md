@@ -10,9 +10,9 @@ Uma aplicação web dedicada a estudantes que querem criar e gerenciar flashcard
 
 ## Descrição
 
-Se você acabou de conhecer o método de memorização através de flashcards, deve ter se deparado com vários aplicativos que permitem a criação desses cartões e o agrupamento deles em decks. Porém, ou esses aplicativos não oferecem uma maneira de organizar a rotina de revisão desses flashcards ou a maneira oferecida é estranha, puco intuitiva, pouco agradável aos olhos...
+Se você acabou de conhecer o método de memorização através de flashcards, deve ter se deparado com vários aplicativos que permitem a criação desses cartões e o agrupamento deles em decks. Porém, ou esses aplicativos não oferecem uma maneira de organizar a rotina de revisão desses flashcards ou a maneira oferecida é estranha, pouco intuitiva, pouco agradável aos olhos...
 
-A proposta do Revisionmaster é justamente combinar a simples criação e agrupamento de flashcards com uma organização intuitiva e visual, ou seja, que você consegue compreender plenamente e que deixa você com mais controle sobre sua rotina de revisão e estudos, sem depender de ferramentas externas.
+A proposta do Revisionmaster é justamente combinar a simples criação e agrupamento de flashcards com uma organização intuitiva e visual, ou seja, que você consegue compreender plenamente e que deixa você com mais controle sobre sua rotina de revisão e estudos, sem depender de ferramentas externas (planilhas, anotações...).
 
 ## Funcionalidades
 
