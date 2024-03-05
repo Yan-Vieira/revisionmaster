@@ -1,10 +1,11 @@
-import type { UserCredential, UserInfo, Auth } from "firebase/auth"
+import type { UserCredential, Auth } from "firebase/auth"
 import { Auth as AuthEnum, FirebaseMode } from "@/enums"
 
 import { getFirebase } from "."
 import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
+    updateProfile,
     signOut,
     deleteUser
 } from "firebase/auth"
@@ -27,15 +28,18 @@ const selectAuthInstance = (mode:string = FirebaseMode.default, altAuth:Auth | n
  * @param loginMethod one of the login methods described in ``Auth.loginMethod`` enum
  * @returns an ``userCredential`` instance or the error code in case of failure
 */
-export async function createUser (mode:string = FirebaseMode.default, altAuth:Auth | null, email:string, password:string):Promise<UserCredential | string> {
+export async function createUser (mode:string = FirebaseMode.default, altAuth:Auth | null, email:string, password:string, username:string):Promise<UserCredential | string> {
 
     const choseAuth = selectAuthInstance(mode, altAuth)
 
     if (!email || email.length <= 0) return AuthEnum.Errors.argumentMissing
     if (!password || password.length <= 0) return AuthEnum.Errors.argumentMissing
+    if (!username || username.length <= 0) return AuthEnum.Errors.argumentMissing
 
     try {
         const newUserCredential = await createUserWithEmailAndPassword(choseAuth, email, password)
+
+        await updateProfile(newUserCredential.user, {displayName: username})
 
         mode === FirebaseMode.default && await sendEmailVerification(newUserCredential.user)
 
