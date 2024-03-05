@@ -20,7 +20,7 @@ describe('auth', () => {
 
         it('should create an user', async () => {
 
-            const result = await authFuncs.createUser(FirebaseMode.autoTest, auth, 'example@testing.com', 'Str0ngpaSs#$')
+            const result = await authFuncs.createUser(FirebaseMode.autoTest, auth, 'example@testing.com', 'Str0ngpaSs#$', 'Krikor Mekhitarian')
 
             expect(typeof(result)).toBe('object')
         })
@@ -35,11 +35,11 @@ describe('auth', () => {
 
         it('should not create an user if it is passed one or more empty arguments', async () => {
 
-            const result1 = await authFuncs.createUser(FirebaseMode.autoTest, auth, '', 'Std5096V20$$')
+            const result1 = await authFuncs.createUser(FirebaseMode.autoTest, auth, '', 'Std5096V20$$', 'Ding Liren')
 
-            const result2 = await authFuncs.createUser(FirebaseMode.autoTest, auth, 'coolemail@test.com', '')
+            const result2 = await authFuncs.createUser(FirebaseMode.autoTest, auth, 'coolemail@test.com', '', 'Hans Niemann')
 
-            const result3 = await authFuncs.createUser(FirebaseMode.autoTest, auth, '', '')
+            const result3 = await authFuncs.createUser(FirebaseMode.autoTest, auth, '', '', '')
 
             expect(result1).toBe(Auth.Errors.argumentMissing)
             expect(result2).toBe(Auth.Errors.argumentMissing)
@@ -48,9 +48,7 @@ describe('auth', () => {
 
         it('should not create an user if the provided email already is being used', async () => {
 
-            const result = await authFuncs.createUser(FirebaseMode.autoTest, auth, 'example@testing.com', 'Str0ngpaSs#$')
-
-            console.log(result)
+            const result = await authFuncs.createUser(FirebaseMode.autoTest, auth, 'example@testing.com', 'Str0ngpaSs#$', 'Grikor')
 
             expect(result).toBe(Auth.Errors.emailAlreadyInUse)
         })
@@ -61,7 +59,7 @@ describe('auth', () => {
 
         it('should delete the user logged in at the moment', async () => {
 
-            await authFuncs.createUser(FirebaseMode.autoTest, auth, 'example@testing2.com', 'Str0ngpaSs#$29')
+            await authFuncs.createUser(FirebaseMode.autoTest, auth, 'example@testing2.com', 'Str0ngpaSs#$29', 'Fabiano Caruana')
 
             const result = await authFuncs.deleteCurrentUser(FirebaseMode.autoTest, auth)
 
