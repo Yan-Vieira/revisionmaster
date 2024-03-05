@@ -1,4 +1,4 @@
-import type { UserCredential, Auth } from "firebase/auth"
+import type { UserCredential, UserInfo, Auth } from "firebase/auth"
 import { Auth as AuthEnum, FirebaseMode } from "@/enums"
 
 import { getFirebase } from "."
@@ -8,6 +8,16 @@ import {
     signOut,
     deleteUser
 } from "firebase/auth"
+
+const selectAuthInstance = (mode:string = FirebaseMode.default, altAuth:Auth | null) => {
+    
+    const modeCases = {
+        'default': () => {return getFirebase().auth},
+        'autoTest': () => {return altAuth || getFirebase().auth}
+    } as {[key:string]: () => Auth}
+
+    return modeCases[mode]()
+}
 
 
 
@@ -19,12 +29,7 @@ import {
 */
 export async function createUser (mode:string = FirebaseMode.default, altAuth:Auth | null, email:string, password:string):Promise<UserCredential | string> {
 
-    const modeCases = {
-        'default': () => {return getFirebase().auth},
-        'autoTest': () => {return altAuth || getFirebase().auth}
-    } as {[key:string]: () => Auth}
-
-    const choseAuth = modeCases[mode]()
+    const choseAuth = selectAuthInstance(mode, altAuth)
 
     if (!email || email.length <= 0) return AuthEnum.Errors.argumentMissing
     if (!password || password.length <= 0) return AuthEnum.Errors.argumentMissing
@@ -40,20 +45,15 @@ export async function createUser (mode:string = FirebaseMode.default, altAuth:Au
     }
 }
 
+
+
 /**
  * @param mode whether the function is being used in default mode or in an automatic test
  * @param altAuth if the function is being used in an automatic test, it is necessary to pass the test ``auth`` instance
 */
-export async function logOutCurrentUser (mode:string):Promise<string>
-export async function logOutCurrentUser (mode:string, altAuth:Auth):Promise<string>
-export async function logOutCurrentUser (mode:string, altAuth?:Auth) {
+export async function logOutCurrentUser (mode:string, altAuth:Auth | null) {
 
-    const modeCases = {
-        'default': () => {return getFirebase().auth},
-        'autoTest': () => {return altAuth || getFirebase().auth}
-    } as {[key:string]: () => Auth}
-
-    const choseAuth = modeCases[mode]()
+    const choseAuth = selectAuthInstance(mode, altAuth)
 
     try {
 
@@ -70,21 +70,16 @@ export async function logOutCurrentUser (mode:string, altAuth?:Auth) {
     }
 }
 
+
+
 /**
  * Deletes the ``auth.currentUser`` and sign it out
  * @param mode whether the function is being used in default mode or in an automatic test
  * @param altAuth if the function is being used in an automatic test, it is necessary to pass the test ``auth`` instance
  * @returns a string indicating the success or failure from the operation
  */
-export async function deleteCurrentUser (mode:string):Promise<string>
-export async function deleteCurrentUser (mode:string, altAuth:Auth):Promise<string>
-export async function deleteCurrentUser (mode:string, altAuth?:Auth) {
-    const modeCases = {
-        'default': () => {return getFirebase().auth},
-        'autoTest': () => {return altAuth || getFirebase().auth}
-    } as {[key:string]: () => Auth}
-
-    const choseAuth = modeCases[mode]()
+export async function deleteCurrentUser (mode:string, altAuth:Auth | null) {
+    const choseAuth = selectAuthInstance(mode, altAuth)
 
     try {
 
