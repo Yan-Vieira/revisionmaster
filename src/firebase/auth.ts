@@ -4,8 +4,6 @@ import { Auth as AuthEnum, FirebaseMode } from "@/enums"
 import { getFirebase } from "."
 import {
     createUserWithEmailAndPassword,
-    signInWithPopup,
-    GoogleAuthProvider,
     sendEmailVerification,
     signOut,
     deleteUser
@@ -19,9 +17,7 @@ import {
  * @param loginMethod one of the login methods described in ``Auth.loginMethod`` enum
  * @returns an ``userCredential`` instance or the error code in case of failure
 */
-export async function createUser (mode:string, altAuth:Auth | null, loginMethod:string):Promise<UserCredential | string>
-export async function createUser (mode:string, altAuth:Auth | null, loginMethod:string, email:string, password:string):Promise<UserCredential | string>
-export async function createUser (mode:string = FirebaseMode.default, altAuth:Auth | null, loginMethod:string, email?:string, password?:string):Promise<UserCredential | string> {
+export async function createUser (mode:string = FirebaseMode.default, altAuth:Auth | null, email:string, password:string):Promise<UserCredential | string> {
 
     const modeCases = {
         'default': () => {return getFirebase().auth},
@@ -30,41 +26,19 @@ export async function createUser (mode:string = FirebaseMode.default, altAuth:Au
 
     const choseAuth = modeCases[mode]()
 
-    const cases = {
-        'emailAndPassword': async () => {
-            if (!email || email.length <= 0) return AuthEnum.Errors.argumentMissing
+    if (!email || email.length <= 0) return AuthEnum.Errors.argumentMissing
+    if (!password || password.length <= 0) return AuthEnum.Errors.argumentMissing
 
-            if (!password || password.length <= 0) return AuthEnum.Errors.argumentMissing
+    try {
+        const newUserCredential = await createUserWithEmailAndPassword(choseAuth, email, password)
 
-            try {
-                const newUserCredential = await createUserWithEmailAndPassword(choseAuth, email, password)
+        mode === FirebaseMode.default && await sendEmailVerification(newUserCredential.user)
 
-                mode === FirebaseMode.default && await sendEmailVerification(newUserCredential.user)
-
-                return newUserCredential
-            } catch (error) {
-                return (error as any).code as string
-            }
-        },
-        'google': async () => {
-            try {
-                const newUserCredential = await signInWithPopup(choseAuth, new GoogleAuthProvider())
-
-                return newUserCredential
-            } catch (error) {
-                return (error as any).code as string
-            }
-        }
-    } as {
-        [key: string]: (email?:string, password?:string) => Promise<UserCredential | string>,
+        return newUserCredential
+    } catch (error) {
+        return (error as any).code as string
     }
-
-    if (!cases[loginMethod]) return AuthEnum.Errors.invalidLoginMethod
-
-    return cases[loginMethod](email, password)
 }
-
-
 
 /**
  * @param mode whether the function is being used in default mode or in an automatic test
