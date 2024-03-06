@@ -22,7 +22,7 @@ describe('auth', () => {
 
             const result = await authFuncs.createUser(FirebaseMode.autoTest, auth, 'example@testing.com', 'Str0ngpaSs#$', 'Krikor Mekhitarian')
 
-            expect(typeof(result)).toBe('object')
+            expect(result).toBe('success')
         })
 
         it('should not create an user if the required arguments are missing', async () => {
@@ -55,11 +55,26 @@ describe('auth', () => {
 
     })
 
+    describe('logIn', () => {
+
+        it('should log in with the provided data', async () => {
+
+            const result = await authFuncs.logIn(FirebaseMode.autoTest, auth, 'example@testing.com', 'Str0ngpaSs#$')
+
+            console.log(result)
+
+            expect(result).toBe('success')
+        })
+
+    })
+
     describe('deleteCurrentUser', () => {
 
         it('should delete the user logged in at the moment', async () => {
 
             await authFuncs.createUser(FirebaseMode.autoTest, auth, 'example@testing2.com', 'Str0ngpaSs#$29', 'Fabiano Caruana')
+
+            await authFuncs.logIn(FirebaseMode.autoTest, auth, 'example@testing2.com', 'Str0ngpaSs#$29')
 
             const result = await authFuncs.deleteCurrentUser(FirebaseMode.autoTest, auth)
 
