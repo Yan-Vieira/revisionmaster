@@ -6,6 +6,7 @@ import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
     updateProfile,
+    signInWithEmailAndPassword,
     signOut,
     deleteUser
 } from "firebase/auth"
@@ -25,8 +26,7 @@ const selectAuthInstance = (mode:string = FirebaseMode.default, altAuth:Auth | n
 /**
  * @param mode whether the function is being used in default mode or in an automatic test
  * @param altAuth if the function is being used in an automatic test, it is necessary to pass the test ``auth`` instance
- * @param loginMethod one of the login methods described in ``Auth.loginMethod`` enum
- * @returns an ``userCredential`` instance or the error code in case of failure
+ * @returns a string indicating the success or failure from the operation
 */
 export async function createUser (mode:string = FirebaseMode.default, altAuth:Auth | null, email:string, password:string, username:string):Promise<UserCredential | string> {
 
@@ -43,10 +43,42 @@ export async function createUser (mode:string = FirebaseMode.default, altAuth:Au
 
         mode === FirebaseMode.default && await sendEmailVerification(newUserCredential.user)
 
-        return newUserCredential
+        await signOut(choseAuth)
+
+        if (newUserCredential === null) return 'failure'
+        
+        return 'success'
     } catch (error) {
         return (error as any).code as string
     }
+}
+
+
+/**
+ * 
+ * @param mode whether the function is being used in default mode or in an automatic test
+ * @param altAuth if the function is being used in an automatic test, it is necessary to pass the test ``auth`` instance
+ * @returns a string indicating the success or failure from the operation
+*/
+export async function logIn (mode:string = FirebaseMode.default, altAuth:Auth | null, email:string, password:string) {
+
+    const choseAuth = selectAuthInstance(mode, altAuth)
+
+    try {
+
+        if (!email || email.length <= 0) return AuthEnum.Errors.argumentMissing
+        if (!password || password.length <= 0) return AuthEnum.Errors.argumentMissing
+
+        await signInWithEmailAndPassword(choseAuth, email, password)
+
+        if (choseAuth.currentUser === null) return 'failure'
+
+        return 'success'
+    } catch (error) {
+
+        return (error as any).code as string
+    }
+    
 }
 
 
