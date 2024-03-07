@@ -2,7 +2,7 @@
 * @jest-environment node
 */
 
-import { FirebaseMode } from "@/enums"
+import { FirebaseMode, Auth as AuthEnum } from "@/enums"
 
 import { signOut } from "firebase/auth"
 import { authFuncs, firestoreFuncs } from "@/firebase"
@@ -19,6 +19,8 @@ describe('firestore', () => {
     describe('createUserDoc', () => {
 
         it('should create a user document', async () => {
+
+            await authFuncs.createUser(FirebaseMode.autoTest, auth, 'magnusem4il@testing.com', 'En48$$G48', 'Magnus Carlsen')
 
             await authFuncs.logIn(FirebaseMode.autoTest, auth, 'magnusem4il@testing.com', 'En48$$G48')
 
@@ -37,5 +39,35 @@ describe('firestore', () => {
 
             expect(result).toBe('success')
         }, 10000)
+
     })
+
+    describe('getUserDoc', () => {
+        
+        it('should get the UserDoc from a verified user', async () => {
+
+            await authFuncs.logIn(FirebaseMode.autoTest, auth,  'magnusverified@testing.com', 'StrongV4ry!!')
+
+            const result = await firestoreFuncs.getUserDoc(FirebaseMode.autoTest, firestore, auth)
+
+            console.log(result)
+
+            expect(typeof(result)).toBe('object')
+
+        })
+
+        it('should not get the UserDoc from a unverified user', async () => {
+
+            await authFuncs.logIn(FirebaseMode.autoTest, auth, 'magnusem4il@testing.com', 'En48$$G48')
+
+            const result = await firestoreFuncs.getUserDoc(FirebaseMode.autoTest, firestore, auth)
+
+            console.log(result)
+
+            expect(result).toBe(AuthEnum.Errors.emailNotVerified)
+
+        })
+
+    })
+
 })
